@@ -2,7 +2,7 @@
 
 ## “So many books, so little time…”
 
-![alt libros](Input/books-portada.jpg, align="center")
+![alt libros](Input/books-portada.jpg)
 
 ### Overview
 
@@ -15,7 +15,7 @@ The program will receive two parameters; age and genre and will run the folowwin
 * Connect with Google Books API to get a description and number of pages of the selected book
 * Generate a PDF including the title, author, description and number of pages of the book.
 
-### Example of program execution
+### Example of Program Execution
 
 To run the program, it is necessary to call it from the terminal in the following way: python3 main.py and add the flags with the arguments to search for: “year” (being the year) -and “genre” (being the genre)
 
