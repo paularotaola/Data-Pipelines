@@ -8,7 +8,7 @@ def parser():
     # Add argument (int)
     parser.add_argument("year", help="Insert a number",type=int)
     # Add argument (str)
-    parser.add_argument("genre", help="Insert a genre", type=int)
+    parser.add_argument("genre", help="Insert a genre", type=str)
 
     # Retrieve Arguments
     args = parser.parse_args()

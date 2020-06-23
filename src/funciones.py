@@ -8,41 +8,74 @@ from parse import parser
 result = pd.read_csv("Output/books_output.csv")
 result = pd.DataFrame(result)
 
-"""def genres(genre):
-    if genre == "novel":
-        return 335
-    elif genre == "poetry":
-        return 284
-    elif genre == "drama":
-        return 2512
-    elif genre == "adventure":
-        return 342
-    elif genre == "romance":
-        return 358  
-    elif genre == "thriller":
-        return 339
-    elif genre == "biographies":
-        return 131
-    elif genre == "comic":
-        return 98
-    elif genre == "science fiction":
-        return 2626
-    elif genre == "science ":
-        return 2534
-    elif genre == "kids ":
-        return 2491
-    elif genre == "mental-health ":
-        return 1300"""
-   
+def genres(y):
+    """
+    Filters the genre with the corresponding category in the dataset
+    """
+    if y == "novel":
+        y =335
+        return y
+    elif y == "poetry":
+        y = 284
+    elif y == "drama":
+        y =2512
+    elif y == "adventure":
+        y =342
+    elif y == "romance":
+        y =358  
+    elif y == "thriller":
+        y =339
+    elif y == "biographies":
+        y =131
+    elif y == "comic":
+        y= 98
+    elif y == "science fiction":
+        y= 2626
+    elif y == "science":
+        y =2534
+    elif y == "kids":
+        y =2491
+    elif y == "mental-health":
+        y =1300
+    return y
 
 def output(x,y):
+    """
+    Filters the dataset with the year and genre
+    """
     x = float(x)
-    n = result[(result["year"]== x) & (result["categories"].str.contains(f"{y}"))& (result["rating-avg"]>1)].sort_values(by="rating-avg",ascending=False).head(1)
-    return n
+    if y == "novel":
+        y =2466
+    elif y == "poetry":
+        y = 284
+    elif y == "drama":
+        y =2512
+    elif y == "adventure":
+        y =342
+    elif y == "romance":
+        y =358  
+    elif y == "thriller":
+        y =339
+    elif y == "biographies":
+        y =131
+    elif y == "comic":
+        y= 2979
+    elif y == "science-fiction":
+        y= 2626
+    elif y == "science":
+        y =2534
+    elif y == "kids":
+        y =2491
+    elif y == "horror":
+        y =2624
+    elif y == "mental-health":
+        y =1300
+
+    filtered = result[(result["year"]== x) & (result["categories"].str.contains(f"{y}"))& (result["rating-avg"]>1)].sort_values(by="rating-avg",ascending=False).head(1)
+    return filtered
 
 
 def get_description(x):
-    
     try:      
         url = f"https://www.googleapis.com/books/v1/volumes?q=isbn:{x}"
         res = requests.get(url).json()
@@ -71,12 +104,12 @@ def get_description(x):
         pdf.cell(180, 10, txt="Description", ln=1, align="L")
         pdf.set_font('Courier', '', 12)
         pdf.multi_cell(190,8,f"{description}",0,2,'C')
-        pdf.image('books.jpg', x=50, y=230, w=80)
+        pdf.image('Input/books.jpg', x=50, y=230, w=80)
 
         return f"Your Book Recommedation ==>", f"Title: {title}", f"==>Author: {author}", f"==>Description: {description}", f" ==>Number of pages: {pages}",f"Available in ebook?: {sales}", pdf.output("book-report.pdf")
     
     except KeyError:
-        return  "No book recommendation for this year :("
+        return "Sorry, no book recommendation available in Google Books :("
     
 
 

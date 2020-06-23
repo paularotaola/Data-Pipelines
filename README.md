@@ -20,13 +20,19 @@ Execution example:
 
 Valid genres are shown in the list below.
 
-* Novel:335
-* Poetry & Drama 284
-* Drama 2512
-* Adventure book 342
-* Romance 358
-* Thriller books 339
-* Biographies 131
+* novel
+* poetry
+* drama 
+* adventure 
+* romance 
+* thriller
+* biographies 
+* comic
+* science-fiction
+* science
+* kids
+* mental-health
+
 
 ### Resources 
 
