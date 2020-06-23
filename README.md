@@ -2,7 +2,7 @@
 
 ## “So many books, so little time…”
 
-[libros](Input/books-portada.jpg)
+[alt libros](Input/books-portada.jpg)
 
 ### Overview
 
