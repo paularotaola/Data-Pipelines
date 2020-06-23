@@ -19,20 +19,3 @@ def parser():
  
     return args
 
-"""def parser():
-    # Create ArgumentParser object
-    parser = ArgumentParser(description="Book Recommendation App")
-    # Add argument (str)
-    parser.add_argument("year", help="Insert a number",type=int)
-    # Add argument (str)
-    parser.add_argument("gender", help="Insert a gender", type=str)
-
-    # Retrieve Arguments
-    args = parser.parse_args()
-
-    # Accessing different variables in args
-    year = args.year
-    gender = args.genre
-    
-    return year, genre
-"""
