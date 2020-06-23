@@ -2,7 +2,7 @@
 
 ## “So many books, so little time…”
 
-[alt libros](Input/books-portada.jpg)
+![alt libros](Input/books-portada.jpg)
 
 ### Overview
 
@@ -27,3 +27,10 @@ Valid genres are shown in the list below.
 * Romance 358
 * Thriller books 339
 * Biographies 131
+
+### Resources 
+
+* Python Functional Programming How To Documentation(https://docs.python.org/3.7/howto/functional.html)
+* Python List Comprehensions Documentation (https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)
+* Python Errors and Exceptions Documentation(https://docs.python.org/3/tutorial/errors.html)
+* StackOverflow String Operation Questions(https://stackoverflow.com/questions/tagged/string+python)
