@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 #jupyter notebooks
-.API.ipynb
-.Pruebas.ipynb
+API.ipynb
+Pruebas.ipynb
