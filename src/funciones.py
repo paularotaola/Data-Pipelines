@@ -3,75 +3,19 @@ import json
 import pandas as pd
 from fpdf import FPDF
 from parse import parser 
+import re 
 
-
-result = pd.read_csv("Output/books_output.csv")
+result = pd.read_csv("Output/books_clean_dataset.csv")
 result = pd.DataFrame(result)
 
-def genres(y):
-    """
-    Filters the genre with the corresponding category in the dataset
-    """
-    if y == "novel":
-        y =335
-        return y
-    elif y == "poetry":
-        y = 284
-    elif y == "drama":
-        y =2512
-    elif y == "adventure":
-        y =342
-    elif y == "romance":
-        y =358  
-    elif y == "thriller":
-        y =339
-    elif y == "biographies":
-        y =131
-    elif y == "comic":
-        y= 98
-    elif y == "science fiction":
-        y= 2626
-    elif y == "science":
-        y =2534
-    elif y == "kids":
-        y =2491
-    elif y == "mental-health":
-        y =1300
-    return y
+
 
 def output(x,y):
     """
     Filters the dataset with the year and genre
     """
-    x = float(x)
-    if y == "novel":
-        y =2466
-    elif y == "poetry":
-        y = 284
-    elif y == "drama":
-        y =2512
-    elif y == "adventure":
-        y =342
-    elif y == "romance":
-        y =358  
-    elif y == "thriller":
-        y =339
-    elif y == "biographies":
-        y =131
-    elif y == "comic":
-        y= 2979
-    elif y == "science-fiction":
-        y= 2626
-    elif y == "science":
-        y =2534
-    elif y == "kids":
-        y =2491
-    elif y == "horror":
-        y =2624
-    elif y == "mental-health":
-        y =1300
 
-    filtered = result[(result["year"]== x) & (result["categories"].str.contains(f"{y}"))& (result["rating-avg"]>1)].sort_values(by="rating-avg",ascending=False).head(1)
+    filtered = result[(result["year"]== x) & (result["category_name"].str.contains(f"{y}",regex=True,flags= re.IGNORECASE))& (result["rating-avg"]>1)].sort_values(by="rating-avg",ascending=False).head(1)
     return filtered
 
 
@@ -106,11 +50,16 @@ def get_description(x):
         pdf.multi_cell(190,8,f"{description}",0,2,'C')
         pdf.image('Input/books.jpg', x=50, y=230, w=80)
 
-        return f"Your Book Recommedation ==>", f"Title: {title}", f"==>Author: {author}", f"==>Description: {description}", f" ==>Number of pages: {pages}",f"Available in ebook?: {sales}", pdf.output("book-report.pdf")
+        
+        return f"Your Book Recommedation ==>", {
+        "==> Title": title, 
+        "==> Author": author, 
+        "==> Description": description, 
+        "==> Number of pages": pages,
+        "==>Available in ebook?": sales}, pdf.output("Output/book-report.pdf")
     
     except KeyError:
         return "Sorry, no book recommendation available in Google Books :("
     
 
 
-  

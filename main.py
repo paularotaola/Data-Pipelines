@@ -13,10 +13,8 @@ def main():
     genre = args.genre
     print (args)
     
-    result = pd.read_csv("Output/books_output.csv")
+    result = pd.read_csv("Output/books_clean_dataset.csv")
     result = pd.DataFrame(result)
-
-    fc.genres(genre)
 
     n = fc.output(year, genre)
     if n.empty:
@@ -31,4 +29,3 @@ def main():
     
 if __name__ == "__main__":
         main()
-

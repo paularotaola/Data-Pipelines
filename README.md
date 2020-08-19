@@ -11,13 +11,14 @@ The goal of this project is to build a data pipeline that processes the data and
 ### Program Workflow
 
 The program will receive two parameters; age and genre and will run the folowwin actions:
-* Filter the dataset containing +55.000 books and return the top book bases on ratings.
+
+* Filter the [dataset](https://www.kaggle.com/sp1thas/book-depository-dataset) from Kaggle containing +55.000 books and return the top book based on ratings.
 * Connect with Google Books API to get a description and number of pages of the selected book.
 * Generate a PDF including the title, author, description and number of pages of the book.
 
 ### Example of Program Execution
 
-To run the program, it is necessary to call it from the terminal in the following way: python3 main.py and add the flags with the arguments to search for: “year” (being the year) -and “genre” (being the genre).
+To run the program, it is necessary to call it from the terminal in the following way: python3 main.py and add the flags with the arguments to search for: “year” (being the year) and “genre” (being the genre).
 
 Execution example:
 
@@ -25,18 +26,25 @@ Execution example:
 
 Valid genres are shown in the list below.
 
-* novel
-* poetry
-* drama 
-* adventure 
-* romance 
-* thriller
-* biographies 
-* comic
-* science-fiction
-* science
-* kids
-* mental-health
+* Classic Books & Novels
+* Poetry
+* Drama
+* Adventure
+* Romance
+* Thrillers
+* Biographies and autobiographies
+* Comic
+* Science fiction
+* Life science
+* For kids
+* Romance
+* Crime
+* Religious
+* Horror
+* Historical Fiction
+* Personal Development
+* Graphic Novels: Manga
+* Guidebooks
 
 
 ### Resources 
