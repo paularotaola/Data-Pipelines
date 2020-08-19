@@ -1,4 +1,3 @@
-#import src.funciones as fc
 import src.filter_dataset as fd
 import src.get_description as gd
 
@@ -24,9 +23,11 @@ def main():
         print("No book recommendation for this genre, please introduce another option")
     
     x = pd.unique(n["isbn10"]).tolist()
-    results = [gd.get_description(i) for i in x]
-    print(results)
-    
+    for i in x: 
+        #results = [gd.get_description(i) for i in x]
+        results = gd.get_description(i)
+        print(results)
+
 
     if results == Exception:
         print("")

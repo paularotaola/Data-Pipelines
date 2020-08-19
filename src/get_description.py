@@ -35,6 +35,7 @@ def get_description(x):
         pdf.multi_cell(190,8,f"{description}",0,2,'C')
         pdf.image('Input/books.jpg', x=50, y=230, w=80)
         
+
         return f"Your Book Recommedation ==>", {
         "==> Title": title, 
         "==> Author": author, 
