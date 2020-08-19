@@ -1,24 +1,7 @@
 import requests
 import json
-import pandas as pd
-from fpdf import FPDF
 from parse import parser 
-import re
 from fpdf import FPDF
-
-result = pd.read_csv("Output/books_clean_dataset.csv")
-result = pd.DataFrame(result)
-
-
-
-def output(x,y):
-    """
-    Filters the dataset with the year and genre
-    """
-
-
-    filtered = result[(result["year"]== x) & (result["category_name"].str.contains(f"{y}",regex=True,flags= re.IGNORECASE))& (result["rating-avg"]>1)].sort_values(by="rating-avg",ascending=False).head(1)
-    return filtered
 
 
 def get_description(x):
@@ -30,7 +13,7 @@ def get_description(x):
         description = res["items"][0]["volumeInfo"]["description"]
         pages = res["items"][0]["volumeInfo"]["pageCount"]
         sales = res["items"][0]["saleInfo"]["isEbook"]
-        
+
         title2 = "Your Book Report"
         pdf = FPDF('P','mm','A4')
         pdf.add_page()
@@ -51,39 +34,13 @@ def get_description(x):
         pdf.set_font('Courier', '', 12)
         pdf.multi_cell(190,8,f"{description}",0,2,'C')
         pdf.image('Input/books.jpg', x=50, y=230, w=80)
-
-        #return f"Your Book Recommedation ==>", f"Title: {title}", f"==>Author: {author}", f"==>Description: {description}", f" ==>Number of pages: {pages}",f"Available in ebook?: {sales}", pdf.output("Output/book-report.pdf")
+        
         return f"Your Book Recommedation ==>", {
         "==> Title": title, 
         "==> Author": author, 
         "==> Description": description, 
-        "==> Number of pages": pages,
-        "==>Available in ebook?": sales, pdf.output("Output/book-report.pdf")
+        "==> Number of pages": pages}, pdf.output("Output/book-report.pdf")
     
     except KeyError:
         return "Sorry, no book recommendation available in Google Books :("
-
-
-def main():
-
-    args = parser()
-    year = args.year
-    genre = args.genre
-    print (args)
     
-    result = pd.read_csv("Output/books_clean_dataset.csv")
-    result = pd.DataFrame(result)
-
-    n = output(year, genre)
-    if n.empty:
-        print("No book recommendation for this genre, please introduce another option")
-    
-    x = pd.unique(n["isbn10"]).tolist()
-    results = [get_description(i) for i in x]
-    print(results)
-    
-    if results == Exception:
-        print("")
-    
-if __name__ == "__main__":
-        main()

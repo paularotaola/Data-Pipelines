@@ -1,4 +1,7 @@
-import src.funciones as fc
+#import src.funciones as fc
+import src.filter_dataset as fd
+import src.get_description as gd
+
 import requests
 import json
 import pandas as pd
@@ -8,7 +11,7 @@ from parse import parser
 
 def main():
 
-    args = fc.parser()
+    args = parser()
     year = args.year
     genre = args.genre
     print (args)
@@ -16,14 +19,15 @@ def main():
     result = pd.read_csv("Output/books_clean_dataset.csv")
     result = pd.DataFrame(result)
 
-    n = fc.output(year, genre)
+    n = fd.filter_dataset(year, genre)
     if n.empty:
         print("No book recommendation for this genre, please introduce another option")
     
     x = pd.unique(n["isbn10"]).tolist()
-    results = [fc.get_description(i) for i in x]
+    results = [gd.get_description(i) for i in x]
     print(results)
     
+
     if results == Exception:
         print("")
     
