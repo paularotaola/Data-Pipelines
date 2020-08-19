@@ -2,11 +2,14 @@
 
 ## “So many books, so little time…”
 
-![alt libros](Input/books-portada.jpg)
+![alt libros](Input/books-portada2.jpg)
 
 ### Overview
 
 The goal of this project is to build a data pipeline that processes the data and produces a result. In this case the result will be a book recommendation based on the genre and year selected by the user.
+
+In order to build the API, first we have to clean and manipulate the books dataset (check Pre-data-analysis jupyter notebook) so that we can get all the information needed via the API.
+
 
 ### Program Workflow
 
